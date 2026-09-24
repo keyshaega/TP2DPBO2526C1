@@ -1,0 +1,232 @@
+
+INPUT TEST PROGRAM TIKET BIOSKOP
+
+
+TEST CASE 1 - INPUT NORMAL
+==========================
+ID Tiket       : T006
+Nomor Kursi    : F08
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Data berhasil ditambahkan.
+Jumlah data menjadi 6.
+
+
+TEST CASE 2 - ID KOSONG
+=======================
+ID Tiket       :
+Nomor Kursi    : F09
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar 2
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"ID Tiket tidak boleh kosong."
+
+
+TEST CASE 3 - ID DUPLIKAT
+=========================
+ID Tiket       : T001
+Nomor Kursi    : F10
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"ID Tiket sudah digunakan."
+
+
+TEST CASE 4 - HARGA BUKAN ANGKA
+===============================
+ID Tiket       : T007
+Nomor Kursi    : F11
+Harga          : abc
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Harga harus berupa angka."
+
+
+TEST CASE 5 - HARGA NEGATIF
+============================
+ID Tiket       : T008
+Nomor Kursi    : F12
+Harga          : -50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Harga tidak boleh negatif."
+
+
+TEST CASE 6 - DURASI BUKAN ANGKA
+================================
+ID Tiket       : T009
+Nomor Kursi    : G01
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : seratus
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Durasi harus berupa angka."
+
+
+TEST CASE 7 - DURASI NEGATIF
+============================
+ID Tiket       : T010
+Nomor Kursi    : G02
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : -120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Durasi tidak boleh negatif."
+
+
+TEST CASE 8 - RATING BUKAN ANGKA
+=================================
+ID Tiket       : T011
+Nomor Kursi    : G03
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : tiga belas
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Rating Usia harus berupa angka."
+
+
+TEST CASE 9 - JAM TIDAK VALID
+=============================
+ID Tiket       : T012
+Nomor Kursi    : G04
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 25:70
+Tanggal Tayang : 27-09-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Format jam harus HH:MM dan berada pada 00:00 - 23:59."
+
+
+TEST CASE 10 - TANGGAL FORMAT SALAH
+====================================
+ID Tiket       : T013
+Nomor Kursi    : G05
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 2026-09-27
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Format tanggal harus DD-MM-YYYY dan tanggal harus valid."
+
+
+TEST CASE 11 - TANGGAL TIDAK VALID
+===================================
+ID Tiket       : T014
+Nomor Kursi    : G06
+Harga          : 50000
+Status Tiket   : Aktif
+Judul Film     : Avatar
+Genre          : Action
+Durasi         : 120
+Rating Usia    : 13
+Studio         : Studio 6
+Jam Tayang     : 19:00
+Tanggal Tayang : 31-02-2026
+Jenis Studio   : IMAX
+
+HASIL:
+Muncul error:
+"Format tanggal harus DD-MM-YYYY dan tanggal harus valid."
+
+
+HASIL AKHIR YANG DIHARAPKAN
+===========================
+Jika test case normal berhasil dan test case error ditolak:
+- Data awal tetap ada.
+- Data yang valid berhasil ditambahkan.
+- Data yang invalid tidak masuk ke tabel.
+- ID duplikat ditolak. 
+- Kolom tabel menampilkan seluruh 12 atribut.
