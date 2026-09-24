@@ -1,4 +1,4 @@
-# TP2DPBO2526C1
+# TP2DPBO2526C1 BELUM SELESAI TERNYATA :)
 ## Janji
 Saya Keysha Ega magani dengan NIM 2507925 mengerjakan Tugas Praktikum 2 dalam mata kuliah Desain dan Pemrograman Berorientasi Objek untuk keberkahan-Nya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
