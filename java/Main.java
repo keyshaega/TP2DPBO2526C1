@@ -171,60 +171,201 @@ public class Main {
 
 
     // Menampilkan seluruh data dalam satu tabel
-    public static void tampilkanData(
-        ArrayList<TiketBioskop> daftarTiket
-    ) {
-        System.out.println();
-        System.out.println("=".repeat(150));
-        System.out.println(
-            "                                              DATA TIKET BIOSKOP JAVA"
-        );
-        System.out.println("=".repeat(150));
+public static void tampilkanData(
+    ArrayList<TiketBioskop> daftarTiket
+) {
+    System.out.println();
 
-        if (daftarTiket.size() == 0) {
-            System.out.println("Belum ada data tiket.");
+    if (daftarTiket.size() == 0) {
+        System.out.println("Belum ada data tiket.");
+    } else {
 
-        } else {
-            System.out.printf(
-                "%-8s%-12s%-10s%-12s%-20s%-15s%-14s%-10s%-12s%-12s%-15s%-15s%n",
-                "ID",
-                "Kursi",
-                "Harga",
-                "Status",
-                "Film",
-                "Genre",
-                "Durasi",
-                "Rating",
-                "Studio",
-                "Jam",
-                "Tanggal",
-                "Jenis"
+        // Menentukan panjang maksimal setiap kolom
+        int lebarID = "ID".length();
+        int lebarKursi = "Kursi".length();
+        int lebarHarga = "Harga".length();
+        int lebarStatus = "Status".length();
+        int lebarFilm = "Film".length();
+        int lebarGenre = "Genre".length();
+        int lebarDurasi = "Durasi".length();
+        int lebarRating = "Rating".length();
+        int lebarStudio = "Studio".length();
+        int lebarJam = "Jam".length();
+        int lebarTanggal = "Tanggal".length();
+        int lebarJenis = "Jenis".length();
+
+        // Mengecek panjang data terpanjang
+        for (TiketBioskop tiket : daftarTiket) {
+
+            lebarID = Math.max(
+                lebarID,
+                tiket.getIdTiket().length()
             );
 
-            System.out.println("-".repeat(150));
+            lebarKursi = Math.max(
+                lebarKursi,
+                tiket.getNomorKursi().length()
+            );
 
-            for (TiketBioskop tiket : daftarTiket) {
-                System.out.printf(
-                    "%-8s%-12s%-10d%-12s%-20s%-15s%-14s%-10d%-12s%-12s%-15s%-15s%n",
-                    tiket.getIdTiket(),
-                    tiket.getNomorKursi(),
-                    tiket.getHarga(),
-                    tiket.getStatusTiket(),
-                    tiket.getJudulFilm(),
-                    tiket.getGenre(),
-                    tiket.getDurasi() + " menit",
-                    tiket.getRatingUsia(),
-                    tiket.getStudio(),
-                    tiket.getJamTayang(),
-                    tiket.getTanggalTayang(),
-                    tiket.getJenisStudio()
-                );
-            }
+            lebarHarga = Math.max(
+                lebarHarga,
+                String.valueOf(tiket.getHarga()).length()
+            );
 
-            System.out.println("=".repeat(150));
+            lebarStatus = Math.max(
+                lebarStatus,
+                tiket.getStatusTiket().length()
+            );
+
+            lebarFilm = Math.max(
+                lebarFilm,
+                tiket.getJudulFilm().length()
+            );
+
+            lebarGenre = Math.max(
+                lebarGenre,
+                tiket.getGenre().length()
+            );
+
+            lebarDurasi = Math.max(
+                lebarDurasi,
+                (tiket.getDurasi() + " menit").length()
+            );
+
+            lebarRating = Math.max(
+                lebarRating,
+                String.valueOf(tiket.getRatingUsia()).length()
+            );
+
+            lebarStudio = Math.max(
+                lebarStudio,
+                tiket.getStudio().length()
+            );
+
+            lebarJam = Math.max(
+                lebarJam,
+                tiket.getJamTayang().length()
+            );
+
+            lebarTanggal = Math.max(
+                lebarTanggal,
+                tiket.getTanggalTayang().length()
+            );
+
+            lebarJenis = Math.max(
+                lebarJenis,
+                tiket.getJenisStudio().length()
+            );
         }
-    }
 
+        // Tambahan 2 spasi supaya tabel tidak terlalu rapat
+        lebarID += 2;
+        lebarKursi += 2;
+        lebarHarga += 2;
+        lebarStatus += 2;
+        lebarFilm += 2;
+        lebarGenre += 2;
+        lebarDurasi += 2;
+        lebarRating += 2;
+        lebarStudio += 2;
+        lebarJam += 2;
+        lebarTanggal += 2;
+        lebarJenis += 2;
+
+        // Menghitung panjang garis tabel
+        int totalLebar =
+            lebarID +
+            lebarKursi +
+            lebarHarga +
+            lebarStatus +
+            lebarFilm +
+            lebarGenre +
+            lebarDurasi +
+            lebarRating +
+            lebarStudio +
+            lebarJam +
+            lebarTanggal +
+            lebarJenis;
+
+        System.out.println("=".repeat(totalLebar));
+
+        String judul = "DATA TIKET BIOSKOP JAVA";
+
+        int spasiKiri =
+            (totalLebar - judul.length()) / 2;
+
+        System.out.println(
+            " ".repeat(Math.max(0, spasiKiri)) + judul
+        );
+
+        System.out.println("=".repeat(totalLebar));
+
+        // Header
+        System.out.printf(
+            "%-" + lebarID + "s" +
+            "%-" + lebarKursi + "s" +
+            "%-" + lebarHarga + "s" +
+            "%-" + lebarStatus + "s" +
+            "%-" + lebarFilm + "s" +
+            "%-" + lebarGenre + "s" +
+            "%-" + lebarDurasi + "s" +
+            "%-" + lebarRating + "s" +
+            "%-" + lebarStudio + "s" +
+            "%-" + lebarJam + "s" +
+            "%-" + lebarTanggal + "s" +
+            "%-" + lebarJenis + "s%n",
+
+            "ID",
+            "Kursi",
+            "Harga",
+            "Status",
+            "Film",
+            "Genre",
+            "Durasi",
+            "Rating",
+            "Studio",
+            "Jam",
+            "Tanggal",
+            "Jenis"
+        );
+
+        System.out.println("-".repeat(totalLebar));
+
+        // Isi tabel
+        for (TiketBioskop tiket : daftarTiket) {
+
+            System.out.printf(
+                "%-" + lebarID + "s" +
+                "%-" + lebarKursi + "s" +
+                "%-" + lebarHarga + "d" +
+                "%-" + lebarStatus + "s" +
+                "%-" + lebarFilm + "s" +
+                "%-" + lebarGenre + "s" +
+                "%-" + lebarDurasi + "s" +
+                "%-" + lebarRating + "d" +
+                "%-" + lebarStudio + "s" +
+                "%-" + lebarJam + "s" +
+                "%-" + lebarTanggal + "s" +
+                "%-" + lebarJenis + "s%n",
+
+                tiket.getIdTiket(),
+                tiket.getNomorKursi(),
+                tiket.getHarga(),
+                tiket.getStatusTiket(),
+                tiket.getJudulFilm(),
+                tiket.getGenre(),
+                tiket.getDurasi() + " menit",
+                tiket.getRatingUsia(),
+                tiket.getStudio(),
+                tiket.getJamTayang(),
+                tiket.getTanggalTayang(),
+                tiket.getJenisStudio()
+            );
+        }
+
+        System.out.println("=".repeat(totalLebar));
+    }
+}
 
     // Menambahkan data tiket
     public static void tambahData(

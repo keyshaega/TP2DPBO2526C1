@@ -1,8 +1,10 @@
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <algorithm>
 #include "TiketBioskop.h"
 
 using namespace std;
@@ -150,51 +152,147 @@ bool idSudahAda(vector<TiketBioskop>& daftarTiket, string idTiket) {
 // Menampilkan seluruh data dalam satu tabel
 void tampilkanData(vector<TiketBioskop>& daftarTiket) {
     cout << endl;
-    cout << "=====================================================================================================================================================" << endl;
-    cout << "                                                                DATA TIKET BIOSKOP CPP" << endl;
-    cout << "=====================================================================================================================================================" << endl;
 
     if (daftarTiket.size() == 0) {
         cout << "Belum ada data tiket." << endl;
     } else {
+        // Menentukan panjang maksimal setiap kolom
+        int lebarID = string("ID").length();
+        int lebarKursi = string("Kursi").length();
+        int lebarHarga = string("Harga").length();
+        int lebarStatus = string("Status").length();
+        int lebarFilm = string("Film").length();
+        int lebarGenre = string("Genre").length();
+        int lebarDurasi = string("Durasi").length();
+        int lebarRating = string("Rating").length();
+        int lebarStudio = string("Studio").length();
+        int lebarJam = string("Jam").length();
+        int lebarTanggal = string("Tanggal").length();
+        int lebarJenis = string("Jenis").length();
+
+        // Mengecek panjang data terpanjang
+        for (TiketBioskop& tiket : daftarTiket) {
+            lebarID = max(lebarID, (int)tiket.getIdTiket().length());
+            lebarKursi = max(lebarKursi, (int)tiket.getNomorKursi().length());
+            lebarHarga = max(
+                lebarHarga,
+                (int)to_string(tiket.getHarga()).length()
+            );
+            lebarStatus = max(
+                lebarStatus,
+                (int)tiket.getStatusTiket().length()
+            );
+            lebarFilm = max(
+                lebarFilm,
+                (int)tiket.getJudulFilm().length()
+            );
+            lebarGenre = max(
+                lebarGenre,
+                (int)tiket.getGenre().length()
+            );
+            lebarDurasi = max(
+                lebarDurasi,
+                (int)(to_string(tiket.getDurasi()) + " menit").length()
+            );
+            lebarRating = max(
+                lebarRating,
+                (int)to_string(tiket.getRatingUsia()).length()
+            );
+            lebarStudio = max(
+                lebarStudio,
+                (int)tiket.getStudio().length()
+            );
+            lebarJam = max(
+                lebarJam,
+                (int)tiket.getJamTayang().length()
+            );
+            lebarTanggal = max(
+                lebarTanggal,
+                (int)tiket.getTanggalTayang().length()
+            );
+            lebarJenis = max(
+                lebarJenis,
+                (int)tiket.getJenisStudio().length()
+            );
+        }
+
+        // Tambahan 2 spasi supaya antar kolom tidak terlalu rapat
+        lebarID += 2;
+        lebarKursi += 2;
+        lebarHarga += 2;
+        lebarStatus += 2;
+        lebarFilm += 2;
+        lebarGenre += 2;
+        lebarDurasi += 2;
+        lebarRating += 2;
+        lebarStudio += 2;
+        lebarJam += 2;
+        lebarTanggal += 2;
+        lebarJenis += 2;
+
+        // Menghitung total lebar tabel
+        int totalLebar =
+            lebarID + lebarKursi + lebarHarga + lebarStatus +
+            lebarFilm + lebarGenre + lebarDurasi + lebarRating +
+            lebarStudio + lebarJam + lebarTanggal + lebarJenis;
+
+        // Garis atas tabel
+        cout << string(totalLebar, '=') << endl;
+
+        // Judul tabel
+        string judul = "DATA TIKET BIOSKOP CPP";
+        int spasiKiri = (totalLebar - judul.length()) / 2;
+
+        if (spasiKiri < 0) {
+            spasiKiri = 0;
+        }
+
+        cout << string(spasiKiri, ' ') << judul << endl;
+
+        // Garis bawah judul
+        cout << string(totalLebar, '=') << endl;
+
+        // Header tabel
         cout << left
-            << setw(8) << "ID"
-            << setw(12) << "Kursi"
-            << setw(10) << "Harga"
-            << setw(12) << "Status"
-            << setw(20) << "Film"
-            << setw(15) << "Genre"
-            << setw(14) << "Durasi"
-            << setw(10) << "Rating"
-            << setw(12) << "Studio"
-            << setw(12) << "Jam"
-            << setw(15) << "Tanggal"
-            << setw(15) << "Jenis"
+            << setw(lebarID) << "ID"
+            << setw(lebarKursi) << "Kursi"
+            << setw(lebarHarga) << "Harga"
+            << setw(lebarStatus) << "Status"
+            << setw(lebarFilm) << "Film"
+            << setw(lebarGenre) << "Genre"
+            << setw(lebarDurasi) << "Durasi"
+            << setw(lebarRating) << "Rating"
+            << setw(lebarStudio) << "Studio"
+            << setw(lebarJam) << "Jam"
+            << setw(lebarTanggal) << "Tanggal"
+            << setw(lebarJenis) << "Jenis"
             << endl;
 
-        cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << string(totalLebar, '-') << endl;
 
+        // Menampilkan isi data
         for (TiketBioskop& tiket : daftarTiket) {
             cout << left
-                << setw(8) << tiket.getIdTiket()
-                << setw(12) << tiket.getNomorKursi()
-                << setw(10) << tiket.getHarga()
-                << setw(12) << tiket.getStatusTiket()
-                << setw(20) << tiket.getJudulFilm()
-                << setw(15) << tiket.getGenre()
-                << setw(14) << (to_string(tiket.getDurasi()) + " menit")
-                << setw(10) << tiket.getRatingUsia()
-                << setw(12) << tiket.getStudio()
-                << setw(12) << tiket.getJamTayang()
-                << setw(15) << tiket.getTanggalTayang()
-                << setw(15) << tiket.getJenisStudio()
+                << setw(lebarID) << tiket.getIdTiket()
+                << setw(lebarKursi) << tiket.getNomorKursi()
+                << setw(lebarHarga) << tiket.getHarga()
+                << setw(lebarStatus) << tiket.getStatusTiket()
+                << setw(lebarFilm) << tiket.getJudulFilm()
+                << setw(lebarGenre) << tiket.getGenre()
+                << setw(lebarDurasi)
+                << (to_string(tiket.getDurasi()) + " menit")
+                << setw(lebarRating) << tiket.getRatingUsia()
+                << setw(lebarStudio) << tiket.getStudio()
+                << setw(lebarJam) << tiket.getJamTayang()
+                << setw(lebarTanggal) << tiket.getTanggalTayang()
+                << setw(lebarJenis) << tiket.getJenisStudio()
                 << endl;
         }
 
-        cout << "=====================================================================================================================================================" << endl;
+        // Garis bawah tabel
+        cout << string(totalLebar, '=') << endl;
     }
 }
-
 
 // Menambahkan data tiket
 void tambahData(vector<TiketBioskop>& daftarTiket) {

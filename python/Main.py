@@ -136,49 +136,116 @@ def idSudahAda(daftarTiket, idTiket):
 # Menampilkan seluruh data dalam satu tabel
 def tampilkanData(daftarTiket):
     print()
-    print("=" * 150)
-    print(" " * 62 + "DATA TIKET BIOSKOP PYTHON")
-    print("=" * 150)
 
     if len(daftarTiket) == 0:
         print("Belum ada data tiket.")
-
     else:
-        print(
-            f"{'ID':<8}"
-            f"{'Kursi':<12}"
-            f"{'Harga':<10}"
-            f"{'Status':<12}"
-            f"{'Film':<20}"
-            f"{'Genre':<15}"
-            f"{'Durasi':<14}"
-            f"{'Rating':<10}"
-            f"{'Studio':<12}"
-            f"{'Jam':<12}"
-            f"{'Tanggal':<15}"
-            f"{'Jenis':<15}"
+        # Menentukan panjang maksimal setiap kolom
+        lebarID = len("ID")
+        lebarKursi = len("Kursi")
+        lebarHarga = len("Harga")
+        lebarStatus = len("Status")
+        lebarFilm = len("Film")
+        lebarGenre = len("Genre")
+        lebarDurasi = len("Durasi")
+        lebarRating = len("Rating")
+        lebarStudio = len("Studio")
+        lebarJam = len("Jam")
+        lebarTanggal = len("Tanggal")
+        lebarJenis = len("Jenis")
+
+        # Mengecek panjang data terpanjang
+        for tiket in daftarTiket:
+            lebarID = max(lebarID, len(tiket.getIdTiket()))
+            lebarKursi = max(lebarKursi, len(tiket.getNomorKursi()))
+            lebarHarga = max(lebarHarga, len(str(tiket.getHarga())))
+            lebarStatus = max(lebarStatus, len(tiket.getStatusTiket()))
+            lebarFilm = max(lebarFilm, len(tiket.getJudulFilm()))
+            lebarGenre = max(lebarGenre, len(tiket.getGenre()))
+            lebarDurasi = max(
+                lebarDurasi,
+                len(str(tiket.getDurasi()) + " menit")
+            )
+            lebarRating = max(
+                lebarRating,
+                len(str(tiket.getRatingUsia()))
+            )
+            lebarStudio = max(lebarStudio, len(tiket.getStudio()))
+            lebarJam = max(lebarJam, len(tiket.getJamTayang()))
+            lebarTanggal = max(
+                lebarTanggal,
+                len(tiket.getTanggalTayang())
+            )
+            lebarJenis = max(lebarJenis, len(tiket.getJenisStudio()))
+
+        # Tambahan 2 spasi supaya antar kolom tidak terlalu rapat
+        lebarID += 2
+        lebarKursi += 2
+        lebarHarga += 2
+        lebarStatus += 2
+        lebarFilm += 2
+        lebarGenre += 2
+        lebarDurasi += 2
+        lebarRating += 2
+        lebarStudio += 2
+        lebarJam += 2
+        lebarTanggal += 2
+        lebarJenis += 2
+
+        # Menghitung total lebar tabel
+        totalLebar = (
+            lebarID + lebarKursi + lebarHarga + lebarStatus
+            + lebarFilm + lebarGenre + lebarDurasi + lebarRating
+            + lebarStudio + lebarJam + lebarTanggal + lebarJenis
         )
 
-        print("-" * 150)
+        # Garis atas tabel
+        print("=" * totalLebar)
 
+        # Judul tabel berada di tengah
+        judul = "DATA TIKET BIOSKOP PYTHON"
+        spasiKiri = (totalLebar - len(judul)) // 2
+        print(" " * max(0, spasiKiri) + judul)
+
+        # Garis bawah judul
+        print("=" * totalLebar)
+
+        # Header tabel
+        print(
+            f"{'ID':<{lebarID}}"
+            f"{'Kursi':<{lebarKursi}}"
+            f"{'Harga':<{lebarHarga}}"
+            f"{'Status':<{lebarStatus}}"
+            f"{'Film':<{lebarFilm}}"
+            f"{'Genre':<{lebarGenre}}"
+            f"{'Durasi':<{lebarDurasi}}"
+            f"{'Rating':<{lebarRating}}"
+            f"{'Studio':<{lebarStudio}}"
+            f"{'Jam':<{lebarJam}}"
+            f"{'Tanggal':<{lebarTanggal}}"
+            f"{'Jenis':<{lebarJenis}}"
+        )
+
+        print("-" * totalLebar)
+
+        # Menampilkan isi data
         for tiket in daftarTiket:
             print(
-                f"{tiket.getIdTiket():<8}"
-                f"{tiket.getNomorKursi():<12}"
-                f"{tiket.getHarga():<10}"
-                f"{tiket.getStatusTiket():<12}"
-                f"{tiket.getJudulFilm():<20}"
-                f"{tiket.getGenre():<15}"
-                f"{str(tiket.getDurasi()) + ' menit':<14}"
-                f"{tiket.getRatingUsia():<10}"
-                f"{tiket.getStudio():<12}"
-                f"{tiket.getJamTayang():<12}"
-                f"{tiket.getTanggalTayang():<15}"
-                f"{tiket.getJenisStudio():<15}"
+                f"{tiket.getIdTiket():<{lebarID}}"
+                f"{tiket.getNomorKursi():<{lebarKursi}}"
+                f"{tiket.getHarga():<{lebarHarga}}"
+                f"{tiket.getStatusTiket():<{lebarStatus}}"
+                f"{tiket.getJudulFilm():<{lebarFilm}}"
+                f"{tiket.getGenre():<{lebarGenre}}"
+                f"{str(tiket.getDurasi()) + ' menit':<{lebarDurasi}}"
+                f"{tiket.getRatingUsia():<{lebarRating}}"
+                f"{tiket.getStudio():<{lebarStudio}}"
+                f"{tiket.getJamTayang():<{lebarJam}}"
+                f"{tiket.getTanggalTayang():<{lebarTanggal}}"
+                f"{tiket.getJenisStudio():<{lebarJenis}}"
             )
 
-        print("=" * 150)
-
+        print("=" * totalLebar)
 
 # Menambahkan data tiket
 def tambahData(daftarTiket):
