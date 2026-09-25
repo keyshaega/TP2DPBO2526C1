@@ -35,7 +35,7 @@ Terdapat 5 data awal yang ditampilkan sebelum user dapat menambahkan data baru. 
 
 ## Tampilan Program
 
-Untuk tampilan data pada program Python, Java, dan C++ kurang lebih seperti berikut:
+Untuk tampilan data pada program Python, Java, dan C++ menggunakan tabel dinamis, kurang lebih seperti berikut:
 
 <img width="1706" height="340" alt="Hasil add data" src="https://github.com/user-attachments/assets/b34d0174-346c-41e0-8109-df67287ffd11" />
 
