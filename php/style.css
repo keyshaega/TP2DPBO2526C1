@@ -275,6 +275,30 @@ body {
     font-weight: 700;
 }
 
+.poster-film {
+    width: 65px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table th {
+    vertical-align: middle;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    white-space: nowrap;
+}
 
 /* =========================
    RESPONSIVE

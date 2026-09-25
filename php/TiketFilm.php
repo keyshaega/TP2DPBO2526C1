@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Tiket.php';
 
 class TiketFilm extends Tiket
@@ -8,6 +7,7 @@ class TiketFilm extends Tiket
     private $genre;
     private $durasi;
     private $ratingUsia;
+    private $gambar;
 
     public function __construct(
         $idTiket,
@@ -17,19 +17,16 @@ class TiketFilm extends Tiket
         $judulFilm,
         $genre,
         $durasi,
-        $ratingUsia
+        $ratingUsia,
+        $gambar
     ) {
-        parent::__construct(
-            $idTiket,
-            $nomorKursi,
-            $harga,
-            $statusTiket
-        );
+        parent::__construct($idTiket, $nomorKursi, $harga, $statusTiket);
 
         $this->judulFilm = $judulFilm;
         $this->genre = $genre;
         $this->durasi = (int) $durasi;
         $this->ratingUsia = (int) $ratingUsia;
+        $this->gambar = $gambar;
     }
 
     public function getJudulFilm()
@@ -52,6 +49,11 @@ class TiketFilm extends Tiket
         return $this->ratingUsia;
     }
 
+    public function getGambar()
+    {
+        return $this->gambar;
+    }
+
     public function setJudulFilm($judulFilm)
     {
         $this->judulFilm = $judulFilm;
@@ -70,6 +72,11 @@ class TiketFilm extends Tiket
     public function setRatingUsia($ratingUsia)
     {
         $this->ratingUsia = (int) $ratingUsia;
+    }
+
+    public function setGambar($gambar)
+    {
+        $this->gambar = $gambar;
     }
 }
 ?>

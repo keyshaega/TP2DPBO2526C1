@@ -17,6 +17,7 @@ $dataAwal = [
         'Sci-Fi',
         169,
         13,
+        'interstellar.jpg',
         'Studio 1',
         '13:00',
         '25-09-2026',
@@ -32,6 +33,7 @@ $dataAwal = [
         'Animation',
         96,
         13,
+        'inside_out_2.jpg',
         'Studio 2',
         '15:30',
         '25-09-2026',
@@ -47,6 +49,7 @@ $dataAwal = [
         'Action',
         181,
         13,
+        'avengers_endgame.jpg',
         'Studio 3',
         '18:00',
         '25-09-2026',
@@ -62,6 +65,7 @@ $dataAwal = [
         'Animation',
         125,
         13,
+        'toy_story_5.jpg',
         'Studio 4',
         '16:00',
         '26-09-2026',
@@ -77,6 +81,7 @@ $dataAwal = [
         'Sci-Fi',
         166,
         17,
+        'dune_part_two.jpg',
         'Studio 5',
         '20:00',
         '26-09-2026',
@@ -269,7 +274,7 @@ $totalStudio = count(array_unique($daftarStudio));
         </div>
 
 
-        <form action="proses.php" method="POST">
+        <form action="proses.php" method="POST"  enctype="multipart/form-data">
 
             <input
                 type="hidden"
@@ -443,6 +448,16 @@ $totalStudio = count(array_unique($daftarStudio));
 
                 </div>
 
+                <div class="col-md-6">
+                    <label class="form-label">Poster / Gambar Film</label>
+                    <input
+                        type="file"
+                        name="gambar"
+                        class="form-control"
+                        accept="image/*"
+                        required
+                    >
+                </div>
 
                 <!-- STUDIO -->
 
@@ -609,7 +624,9 @@ $totalStudio = count(array_unique($daftarStudio));
 
                         <th>Status</th>
 
-                        <th>Film</th>
+                        <th>Gambar</th>
+
+                        <th>Judul Film</th>
 
                         <th>Genre</th>
 
@@ -660,6 +677,13 @@ $totalStudio = count(array_unique($daftarStudio));
 
                                 </span>
 
+                            </td>
+
+                            <td>
+                                <img
+                                    src="images/<?php echo htmlspecialchars($tiket->getGambar()); ?>"
+                                    alt="<?php echo htmlspecialchars($tiket->getJudulFilm()); ?>"
+                                    class="poster-film"
                             </td>
 
                             <td>

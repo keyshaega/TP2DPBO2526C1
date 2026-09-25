@@ -1,5 +1,4 @@
 <?php
-
 require_once 'TiketFilm.php';
 
 class TiketBioskop extends TiketFilm
@@ -18,6 +17,7 @@ class TiketBioskop extends TiketFilm
         $genre,
         $durasi,
         $ratingUsia,
+        $gambar,
         $studio,
         $jamTayang,
         $tanggalTayang,
@@ -31,7 +31,8 @@ class TiketBioskop extends TiketFilm
             $judulFilm,
             $genre,
             $durasi,
-            $ratingUsia
+            $ratingUsia,
+            $gambar
         );
 
         $this->studio = $studio;
