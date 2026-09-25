@@ -1,4 +1,4 @@
-# TP2DPBO2526C1 BELUM SELESAI TERNYATA :)
+# TP2DPBO2526C1 
 ## Janji
 Saya Keysha Ega magani dengan NIM 2507925 mengerjakan Tugas Praktikum 2 dalam mata kuliah Desain dan Pemrograman Berorientasi Objek untuk keberkahan-Nya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
@@ -39,9 +39,10 @@ Untuk tampilan data pada program Python, Java, dan C++ kurang lebih seperti beri
 
 <img width="1706" height="340" alt="Hasil add data" src="https://github.com/user-attachments/assets/b34d0174-346c-41e0-8109-df67287ffd11" />
 
+
 Sedangkan untuk PHP, program dibuat dalam bentuk website sehingga tampilannya seperti berikut:
 
-<img width="1877" height="715" alt="Show all" src="https://github.com/user-attachments/assets/7f35d6b0-9a4a-4c8c-be62-02648e799105" />
+<img width="1869" height="827" alt="Show all" src="https://github.com/user-attachments/assets/488500fe-d00d-42ef-8c88-cb6efb654f11" />
 
 
 Fitur utamanya adalah input data, berikut contoh tampilan input data pada program Python, Java, dan C++ :
@@ -50,7 +51,7 @@ Fitur utamanya adalah input data, berikut contoh tampilan input data pada progra
 
 dan berikut tampilan input data pada program PHP :
 
-<img width="1881" height="829" alt="Add data" src="https://github.com/user-attachments/assets/aea4447b-d568-48f8-a47a-b0707c4e6270" />
+<img width="1844" height="797" alt="Screenshot (826)" src="https://github.com/user-attachments/assets/6f727a90-fcd4-4ca8-b63d-148e03ee8e34" />
 
 
 ## Error Handling
